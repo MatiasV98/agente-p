@@ -37,7 +37,7 @@ try
 catch ME
     error('No se pudo conectar: %s', ME.message);
 end
-fprintf('✓ Conectado. Fs=%d Hz\n', Fs);
+fprintf('Conectado. Fs=%d Hz\n', Fs);
 fprintf('Cerrá la figura o Ctrl+C para guardar y salir.\n\n');
 
 %% ── Obtener parámetros del filtro vía HTTP ──────────────────────────────────
@@ -237,10 +237,10 @@ if ~isempty(all_flt)
     factor = 0.95 / pico;
 
     audiowrite('audio_filtrado.wav', double(all_flt)*factor, Fs);
-    fprintf('✓ audio_filtrado.wav  (%d muestras, %.2fs)\n', numel(all_flt), numel(all_flt)/Fs);
+    fprintf('audio_filtrado.wav  (%d muestras, %.2fs)\n', numel(all_flt), numel(all_flt)/Fs);
 
     audiowrite('audio_crudo.wav', double(all_raw)*factor, Fs);
-    fprintf('✓ audio_crudo.wav     (%d muestras, %.2fs)\n', numel(all_raw), numel(all_raw)/Fs);
+    fprintf('audio_crudo.wav     (%d muestras, %.2fs)\n', numel(all_raw), numel(all_raw)/Fs);
 
     audio_filtrado = all_flt;
     audio_crudo    = all_raw;
@@ -249,10 +249,10 @@ if ~isempty(all_flt)
     total          = total_rx;
     save('audio_datos.mat', 'audio_filtrado', 'audio_crudo', ...
          'audio_fs', 'perdidos', 'total');
-    fprintf('✓ audio_datos.mat\n');
+    fprintf('audio_datos.mat\n');
 
     save('filtro_info.mat', 'filtro_info');
-    fprintf('✓ filtro_info.mat\n');
+    fprintf('filtro_info.mat\n');
 
     if isfield(filtro_info,'tipo')
         fprintf('\n── Filtro guardado ────────────────────────\n');

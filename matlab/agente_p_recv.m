@@ -31,7 +31,7 @@ try
 catch ME
     error('No se pudo conectar: %s', ME.message);
 end
-fprintf('✓ Conectado al ESP32. Fs=%d Hz\n', Fs);
+fprintf('Conectado al ESP32. Fs=%d Hz\n', Fs);
 fprintf('Cerrá la figura o Ctrl+C para guardar y salir.\n\n');
 
 %% ── Figura ─────────────────────────────────────────────────────────────────
@@ -169,7 +169,7 @@ else
 end
 
     audiowrite('audio_filtrado.wav', buf_norm, Fs);
-    fprintf('✓ audio_filtrado.wav  (%d muestras, %.2f seg)\n', ...
+    fprintf('audio_filtrado.wav  (%d muestras, %.2f seg)\n', ...
             numel(all_samples), numel(all_samples)/Fs);
 
     audio_filtrado = all_samples;
@@ -177,7 +177,7 @@ end
     perdidos       = total_lost;
     total          = total_rx;
     save('audio_datos.mat', 'audio_filtrado', 'audio_fs', 'perdidos', 'total');
-    fprintf('✓ audio_datos.mat\n');
+    fprintf('audio_datos.mat\n');
 
     fprintf('\n── Resumen ────────────────────────────────\n');
     fprintf('  Duración  : %.2f s\n',   numel(all_samples)/Fs);

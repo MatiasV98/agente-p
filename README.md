@@ -8,20 +8,30 @@ la captura. Las señales se envían a MATLAB para el análisis espectral.
 Proyecto integrador de **Técnicas Digitales III** (Ingeniería Electrónica, UTN Facultad Regional Paraná,
 2026). Docente: Ing. Alejandro Dachary.
 
+> **Alcance de este repositorio.** Contiene el firmware del ESP32, los receptores de MATLAB y una
+> sesión de audio registrada. No incluye el código del proxy RAG (servidor Flask, modelos y base de
+> conocimiento) ni la versión posterior del firmware con la que se grabó esa sesión; ver
+> [Estructura del repositorio](#estructura-del-repositorio).
+
 > **English summary.** Adaptive digital filtering on an ESP32 assisted by a local (on-premise) AI agent.
 > The user sets the pass and stop frequencies and whether linear phase is required from a web page served
 > by the ESP32. A local LLM with RAG (Ollama, ChromaDB) chooses the filter family, `scipy.signal`
 > computes the minimum order and the coefficients, and the ESP32 loads them and filters 16 kHz I2S audio
 > in real time (FIR by direct convolution, IIR as cascaded second-order sections, no DSP libraries),
 > using FreeRTOS tasks pinned to each core. Audio is streamed over TCP to MATLAB for live FFT analysis.
-> Team project, UTN Paraná, 2026.
+> This repository holds the ESP32 firmware, the MATLAB receivers and a recorded session; the RAG proxy
+> code is not included. Team project, UTN Paraná, 2026.
 
 ## Equipo
 
 Matias Vicentin, Ramiro Paul y Leonel Tomasini.
 
-**Mi aporte (Matias Vicentin):** diseño de la arquitectura completa del sistema y desarrollo de la mayor
-parte del trabajo.
+**Mi aporte (Matias Vicentin):** definición de la arquitectura en cinco etapas (adquisición, decisión
+del agente, cálculo de coeficientes, filtrado embebido y análisis en MATLAB) y de sus decisiones de
+diseño: separar el modelo de lenguaje del cálculo numérico, usar dos modelos según la latencia
+requerida y proteger los coeficientes con un mutex no bloqueante para no interrumpir el muestreo.
+Integración y depuración del sistema completo, desde Docker y la red hasta el firmware ESP-IDF y las
+tareas de FreeRTOS.
 
 ## Arquitectura
 
