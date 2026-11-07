@@ -126,3 +126,8 @@ están incluidos en este repositorio.
    fp, fr y fase lineal, y consultar al agente.
 4. En MATLAB, poner la IP del ESP32 en `agente_p_recv.m` y ejecutarlo. Al cerrar la figura guarda el
    audio en WAV y los datos en MAT.
+
+## Contacto
+
+**Matias Vicentin**, estudiante de Ingeniería Electrónica, UTN Facultad Regional Paraná.
+[LinkedIn](https://www.linkedin.com/in/matiasvicentin)
