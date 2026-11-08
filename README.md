@@ -26,12 +26,6 @@ Proyecto integrador de **Técnicas Digitales III** (Ingeniería Electrónica, UT
 
 Matias Vicentin, Ramiro Paul y Leonel Tomasini.
 
-**Mi aporte (Matias Vicentin):** definición de la arquitectura en cinco etapas (adquisición, decisión
-del agente, cálculo de coeficientes, filtrado embebido y análisis en MATLAB) y de sus decisiones de
-diseño: separar el modelo de lenguaje del cálculo numérico, usar dos modelos según la latencia
-requerida y proteger los coeficientes con un mutex no bloqueante para no interrumpir el muestreo.
-Integración y depuración del sistema completo, desde Docker y la red hasta el firmware ESP-IDF y las
-tareas de FreeRTOS.
 
 ## Arquitectura
 
